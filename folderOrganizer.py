@@ -1,7 +1,7 @@
 import os
 import shutil
 
-## Aqui hay que poner tu ruta de descargas
+## Here you have to put your download path
 downloads = 'C:\\Users\\Usuario\\Downloads\\'
 
 text_ext = ('.txt', '.doc', '.docx', '.pptx', '.odf', '.docm', '.pdf', '.ppt', '.xlsx', '.ods', '.odt')
@@ -12,6 +12,8 @@ compressed_ext = ('.zip', '.rar', '.rar5', '.7z', '.ace', '.gz')
 executable_ext = ('.exe', '.msi')
 programming_ext = ('.py' , '.cpp' , '.js', '.html', '.css', '.c', '.ino', '.sql')
 
+
+### The folders in the download path must be created before executing the script 
 def order(file, extension):
 
     for etx in text_ext:
@@ -32,26 +34,26 @@ def order(file, extension):
     for etx in photo_ext:
 
         if extension == etx:
-            shutil.move(downloads + file, downloads + 'Imagenes')
+            shutil.move(downloads + file, downloads + 'images')
 
     for etx in compressed_ext:
 
         if extension == etx:
-            shutil.move(downloads + file, downloads + 'Comprimidos')
+            shutil.move(downloads + file, downloads + 'compressed_files')
 
     for etx in executable_ext:
 
         if extension == etx:
-            shutil.move(downloads + file, downloads + 'Ejecutables')
+            shutil.move(downloads + file, downloads + 'executables')
 
     for etx in programming_ext:
 
         if extension == etx:
-            shutil.move(downloads + file, downloads + 'Programacion')
+            shutil.move(downloads + file, downloads + 'programming')
 
     if extension != '':
         try:
-            shutil.move(downloads + file, downloads + 'Otros')
+            shutil.move(downloads + file, downloads + 'others')
 
         except:
             pass
@@ -59,7 +61,7 @@ def order(file, extension):
 
 def main():
 
-    print('Iniciando\n')
+    print('Starting\n')
 
     for file in os.listdir(downloads):
 
@@ -69,9 +71,9 @@ def main():
             order(file, etx)
 
         except:
-            print('No se pudo mover el archivo: {}\n'.format(file))
+            print('The file could not be moved: {}\n'.format(file))
 
-    print('Proceso finalizado')
+    print('Ended process')
 
 
 if __name__ == '__main__':
